@@ -14,16 +14,16 @@ class Conversation {
   ConversationStatus status = ConversationStatus.UNKNOWN;
   ConversationSynchronizationStatus synchronizationStatus =
       ConversationSynchronizationStatus.NONE;
-  DateTime? dateCreated;
+  String? dateCreated;
   String? createdBy;
-  DateTime? dateUpdated;
+  String? dateUpdated;
 
   //#region Message properties
-  DateTime? _lastMessageDate;
+  String? _lastMessageDate;
   int? _lastMessageIndex;
   int? _lastReadMessageIndex;
 
-  DateTime? get lastMessageDate => _lastMessageDate;
+  String? get lastMessageDate => _lastMessageDate;
   int? get lastMessageIndex => _lastMessageIndex;
   int? get lastReadMessageIndex => _lastReadMessageIndex;
   //#endregion
@@ -137,16 +137,10 @@ class Conversation {
             map['synchronizationStatus'] ?? '') ??
         ConversationSynchronizationStatus.NONE;
 
-    dateCreated = map['dateCreated'] == null
-        ? null
-        : DateTime.parse(map['dateCreated'] as String);
+    dateCreated = map['dateCreated'] as String? ;
     createdBy = map['createdBy'] as String?;
-    dateUpdated = map['dateUpdated'] == null
-        ? null
-        : DateTime.parse(map['dateUpdated'] as String);
-    _lastMessageDate = map['lastMessageDate'] == null
-        ? null
-        : DateTime.parse(map['lastMessageDate'] as String);
+    dateUpdated = map['dateUpdated']  as String?;
+    _lastMessageDate = map['lastMessageDate'] as String?;
     _lastReadMessageIndex = map['lastReadMessageIndex'] as int?;
     _lastMessageIndex = map['lastMessageIndex'] as int?;
   }
